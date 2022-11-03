@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Logitech G935",
+        "price": "30000",
+        "thumbnail": "https://mexx-img-2019.s3.amazonaws.com/36563_1.jpeg",
+        "id": 1
+    },
+    {
+        "title": "Senheiser 4.40",
+        "price": "73000",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_988610-MLA40490832758_012020-V.webp",
+        "id": 2
+    },
+    {
+        "title": "Astro A50",
+        "price": "47000",
+        "thumbnail": "https://www.fullh4rd.com.ar/img/productos/Pics_Prod/auriculares-astro-a50-wireless--base-station-ps4--windows-0.jpg",
+        "id": 3
+    }
+]
