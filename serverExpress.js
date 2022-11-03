@@ -1,7 +1,9 @@
 const express = require('express');
 const fs = require('fs').promises;
+const container = require('./container');
 
 const filePath = './productos.json';
+const miContainer = new container(filePath);
 const app = express();
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
@@ -14,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/productos', (req, res) => {
-    getProductos(filePath)
+    miContainer.getAll()
     .then(response => {
         res.send(JSON.stringify(response));
     })
@@ -22,20 +24,8 @@ app.get('/productos', (req, res) => {
 })
 
 app.get('/productoRandom', (req, res) => {
-    productoRandom(filePath)
+    miContainer.getRandom()
     .then(response => {
         res.send(JSON.stringify(response));
     })
 })
-
-async function getProductos(path){
-    const productos = await fs.readFile(path);
-    return JSON.parse(productos);
-}
-
-async function productoRandom(path){
-    const data = await fs.readFile(path);
-    const productos = JSON.parse(data);
-    const i = Math.floor(Math.random() * productos.length);
-    return productos[i];
-}
