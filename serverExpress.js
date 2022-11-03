@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs').promises;
 
-const path = './productos.json';
+const filePath = './productos.json';
 const app = express();
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
@@ -9,8 +9,12 @@ const server = app.listen(PORT, () => {
 })
 server.on("error", error => console.log(`Error en servidor ${error}`));
 
+app.get('/', (req, res) => {
+    res.send("<h1>Dirigirse a /productos o a /randomProducto </h1>")
+})
+
 app.get('/productos', (req, res) => {
-    getProductos(path)
+    getProductos(filePath)
     .then(response => {
         console.log(response);
         res.send(JSON.stringify(response));
@@ -19,7 +23,7 @@ app.get('/productos', (req, res) => {
 })
 
 app.get('/productoRandom', (req, res) => {
-    productoRandom(path)
+    productoRandom(filePath)
     .then(response => {
         res.send(JSON.stringify(response));
     })
