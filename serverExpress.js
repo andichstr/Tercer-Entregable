@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
 app.get('/productos', (req, res) => {
     getProductos(filePath)
     .then(response => {
-        console.log(response);
         res.send(JSON.stringify(response));
     })
     
